@@ -21,12 +21,24 @@ namespace Ders45_46
             int c1, c2, c3;
             int d1, d2, d3;
 
+            a1 = rastgele.Next(0, 6);
+            b1 = rastgele.Next(0, 6);
+            c1 = rastgele.Next(0, 6);
+            d1 = rastgele.Next(0, 6);
+
+            a2 = rastgele.Next(0, 6);
+            b2 = rastgele.Next(0, 6);
+            c2 = rastgele.Next(0, 6);
+            d2 = rastgele.Next(0, 6);
+
+            a3 = rastgele.Next(0, 6);
+            b3 = rastgele.Next(0, 6);
+            c3 = rastgele.Next(0, 6);
+            d3 = rastgele.Next(0, 6);
+
             if (sayac == 1)
             {
-                a1 = rastgele.Next(0, 6);
-                b1 = rastgele.Next(0, 6);
-                c1 = rastgele.Next(0, 6);
-                d1 = rastgele.Next(0, 6);
+                
 
                 Console.WriteLine("1. Hafta Skorları");
                 Console.WriteLine("____________________");
@@ -65,10 +77,7 @@ namespace Ders45_46
 
             if (sayac == 2)
             {
-                a2 = rastgele.Next(0, 6);
-                b2 = rastgele.Next(0, 6);
-                c2 = rastgele.Next(0, 6);
-                d2 = rastgele.Next(0, 6);
+               
 
                 Console.WriteLine("2. Hafta Skorları");
                 Console.WriteLine("____________________");
@@ -107,10 +116,7 @@ namespace Ders45_46
 
             if (sayac == 3)
             {
-                a3 = rastgele.Next(0, 6);
-                b3 = rastgele.Next(0, 6);
-                c3 = rastgele.Next(0, 6);
-                d3 = rastgele.Next(0, 6);
+                
 
                 Console.WriteLine("3. Hafta Skorları");
                 Console.WriteLine("____________________");
@@ -149,6 +155,7 @@ namespace Ders45_46
 
             if (sayac == 4)
             {
+                
                 Console.WriteLine("Maçlar Tamalandı....\n");
                 Console.WriteLine("Puan Tablosu");
                 Console.WriteLine("________________");
@@ -156,7 +163,56 @@ namespace Ders45_46
                 Console.WriteLine("Fenerbahçe: " + fb);
                 Console.WriteLine("Beşiktaş: " + bjk);
                 Console.WriteLine("Trabzonspor" + ts);
+                
+                int gsGol = a1 + a2 + a3;
+                int fbGol = b1 + b2 + b3;
+                int bjkGol = c1 + c2 + c3;
+                int tsGol = d1 + d2 + d3;
+
+                if (gs == fb)
+                {
+                    gs += (gsGol > fbGol) ? 1 : 0;
+                    fb += (fbGol > gsGol) ? 1 : 0;
+                }
+
+                if (gs == bjk)
+                {
+                    gs += (gsGol > bjkGol) ? 1 : 0;
+                    bjk += (bjkGol > gsGol) ? 1 : 0;
+                }
+
+                if (gs == ts)
+                {
+                    gs += (gsGol > tsGol) ? 1 : 0;
+                    ts += (tsGol > gsGol) ? 1 : 0;
+                }
+
+                if (fb == bjk)
+                {
+                    fb += (fbGol > bjkGol) ? 1 : 0;
+                    bjk += (bjkGol > fbGol) ? 1 : 0;
+                }
+
+                if (fb == ts)
+                {
+                    fb += (fbGol > tsGol) ? 1 : 0;
+                    ts += (tsGol > fbGol) ? 1 : 0;
+                }
+
+                if (bjk == ts)
+                {
+                    bjk += (bjkGol > tsGol) ? 1 : 0;
+                    ts += (tsGol > bjkGol) ? 1 : 0;
+                }
             }
+
+            Console.WriteLine("\nNihayi Puanlar");
+            Console.WriteLine("________________");
+            Console.WriteLine("Galatasaray: " + gs);
+            Console.WriteLine("Fenerbahçe: " + fb);
+            Console.WriteLine("Beşiktaş: " + bjk);
+            Console.WriteLine("Trabzonspor" + ts);
+
             SoundPlayer ses = new SoundPlayer();
             string yol;
             if (gs > fb && gs > ts && gs > bjk)
